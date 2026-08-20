@@ -771,3 +771,14 @@ phoneLoginButton.addEventListener("click", function () {
     );
 
 });
+const chatBtn = document.getElementById("chatBtn");
+const chatBox = document.getElementById("chatBox");
+const closeChat = document.getElementById("closeChat");
+
+chatBtn.addEventListener("click", function () {
+    chatBox.style.display = "block";
+});
+
+closeChat.addEventListener("click", function () {
+    chatBox.style.display = "none";
+});
