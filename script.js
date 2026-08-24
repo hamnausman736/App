@@ -1,479 +1,140 @@
-
-
-
-
-
-
-// FAQ DROPDOWN
-//const faqQuestions = document.querySelectorAll(".faq-question");
-
-//faqQuestions.forEach(function(question) {
-
-    //question.addEventListener("click", function() {
-
-        //const faqItem = question.parentElement;
-
-       // faqItem.classList.toggle("active");
-
-   // });
-
-//});
-
-// ===============================
-// CHEEZY FOOD JAVASCRIPT
-// ===============================
-
-
-// ===============================
-// 1. VARIABLES
-// ===============================
+// ================= CART =================
 
 let cart = [];
 
-const cartButton = document.querySelector(".cart-btn");
-const loginButton = document.querySelector(".login-btn");
 
-const addButtons = document.querySelectorAll(".add-btn");
+function addToCart(name, price) {
 
-const categoryButtons = document.querySelectorAll(".category");
+    const existingItem =
+        cart.find(item => item.name === name);
 
-const searchInput = document.querySelector(".search-box input");
 
-const orderButtons = document.querySelectorAll(
-    ".order-btn, .offer-btn"
-);
+    if (existingItem) {
 
+        existingItem.quantity++;
 
-// ===============================
-// 2. ADD FOOD TO CART
-// ===============================
-
-addButtons.forEach(function(button) {
-
-    button.addEventListener("click", function() {
-
-        const foodCard = button.closest(".food-card");
-
-        const foodName = foodCard.querySelector("h3").textContent;
-
-        const foodPrice = foodCard.querySelector("strong").textContent;
-
-
-        const food = {
-            name: foodName,
-            price: foodPrice
-        };
-
-
-        cart.push(food);
-
-
-        updateCart();
-
-
-        // Button feedback
-
-        const oldText = button.textContent;
-
-        button.textContent = "✓ Added";
-
-        button.disabled = true;
-
-
-        setTimeout(function() {
-
-            button.textContent = oldText;
-
-            button.disabled = false;
-
-        }, 1000);
-
-    });
-
-});
-
-
-// ===============================
-// 3. UPDATE CART
-// ===============================
-
-function updateCart() {
-
-    const cartCount = document.querySelector(".cart-btn");
-
-    if (!cartCount) {
-        return;
-    }
-
-
-    // Existing count remove
-
-    const oldCount = cartCount.querySelector(".cart-count");
-
-    if (oldCount) {
-        oldCount.remove();
-    }
-
-
-    // New count
-
-    if (cart.length > 0) {
-
-        const count = document.createElement("span");
-
-        count.classList.add("cart-count");
-
-        count.textContent = cart.length;
-
-        cartCount.appendChild(count);
-
-    }
-
-}
-
-
-// ===============================
-// 4. CART CLICK
-// ===============================
-
-cartButton.addEventListener("click", function() {
-
-    if (cart.length === 0) {
-
-        alert("Your cart is empty!");
-
-        return;
-    }
-
-
-    let message = "🛒 Your Cart\n\n";
-
-
-    cart.forEach(function(item, index) {
-
-        message +=
-            (index + 1) +
-            ". " +
-            item.name +
-            " - " +
-            item.price +
-            "\n";
-
-    });
-
-
-    message +=
-        "\nTotal Items: " +
-        cart.length;
-
-
-    alert(message);
-
-});
-
-
-// ===============================
-// 5. LOGIN BUTTON
-// ===============================
-
-loginButton.addEventListener("click", function() {
-
-    const name = prompt("Enter your name:");
-
-    if (name === null) {
-        return;
-    }
-
-
-    if (name.trim() === "") {
-
-        alert("Please enter your name.");
-
-        return;
-    }
-
-
-    alert(
-        "Welcome " +
-        name +
-        "! 👋"
-    );
-
-});
-
-
-// ===============================
-// 6. MENU CATEGORY
-// ===============================
-
-categoryButtons.forEach(function(button) {
-
-    button.addEventListener("click", function() {
-
-
-        // Remove active from all
-
-        categoryButtons.forEach(function(btn) {
-
-            btn.classList.remove("active");
-
-        });
-
-
-        // Add active to clicked button
-
-        button.classList.add("active");
-
-
-        const categoryName =
-            button.textContent.trim();
-
-
-        alert(
-            categoryName +
-            " category selected!"
-        );
-
-    });
-
-});
-
-
-// ===============================
-// 7. SEARCH FOOD
-// ===============================
-
-if (searchInput) {
-
-    searchInput.addEventListener("input", function() {
-
-        const searchValue =
-            searchInput.value
-            .toLowerCase()
-            .trim();
-
-
-        const foodCards =
-            document.querySelectorAll(".food-card");
-
-
-        foodCards.forEach(function(card) {
-
-            const foodName =
-                card.querySelector("h3")
-                .textContent
-                .toLowerCase();
-
-
-            const foodDescription =
-                card.querySelector("p")
-                .textContent
-                .toLowerCase();
-
-
-            if (
-                foodName.includes(searchValue) ||
-                foodDescription.includes(searchValue)
-            ) {
-
-                card.style.display = "";
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
-
-}
-
-
-// ===============================
-// 8. ORDER NOW BUTTON
-// ===============================
-
-orderButtons.forEach(function(button) {
-
-    button.addEventListener("click", function() {
-
-        const menuSection =
-            document.querySelector("#menu");
-
-
-        if (menuSection) {
-
-            menuSection.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    });
-
-});
-
-
-// ===============================
-// 9. DELIVERY / PICKUP
-// ===============================
-
-const deliveryButton =
-    document.querySelector(".delivery");
-
-const pickupButton =
-    document.querySelector(".pickup");
-
-
-if (deliveryButton && pickupButton) {
-
-
-    deliveryButton.addEventListener(
-        "click",
-        function() {
-
-            deliveryButton.classList.add("active");
-
-            pickupButton.classList.remove("active");
-
-
-            alert(
-                "Delivery selected 🚚"
-            );
-
-        }
-    );
-
-
-    pickupButton.addEventListener(
-        "click",
-        function() {
-
-            pickupButton.classList.add("active");
-
-            deliveryButton.classList.remove("active");
-
-
-            alert(
-                "Pick-up selected 🏪"
-            );
-
-        }
-    );
-
-}
-
-
-// ===============================
-// 10. NAVIGATION LINKS
-// ===============================
-
-const navLinks =
-    document.querySelectorAll(".navbar a");
-
-
-navLinks.forEach(function(link) {
-
-    link.addEventListener("click", function(event) {
-
-        const targetId =
-            link.getAttribute("href");
-
-
-        if (
-            targetId &&
-            targetId.startsWith("#")
-        ) {
-
-            const target =
-                document.querySelector(targetId);
-
-
-            if (target) {
-
-                event.preventDefault();
-
-
-                target.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }
-
-        }
-
-    });
-
-});
-
-
-// ===============================
-// 11. PAGE LOADED
-// ===============================
-
-console.log(
-    "Cheezy Food website loaded successfully!"
-);
-// ================================
-// CART
-// ================================
-
-let cart = [];
-
-const addButtons = document.querySelectorAll(".add-btn");
-const cartButton = document.querySelector(".cart-btn");
-
-addButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-        const card = button.closest(".food-card");
-
-        const name = card.querySelector("h3").textContent;
-        const price = card.querySelector("strong").textContent;
+    } else {
 
         cart.push({
             name: name,
-            price: price
+            price: price,
+            quantity: 1
         });
 
-        updateCart();
+    }
 
-        button.textContent = "✓ Added";
+    updateCart();
 
-        setTimeout(function () {
-            button.textContent = "+ Add";
-        }, 1000);
-
-    });
-
-});
+    alert(name + " added to your order!");
+}
 
 
 function updateCart() {
 
-    let count = cartButton.querySelector(".cart-count");
+    const cartItems =
+        document.getElementById("cartItems");
 
-    if (!count) {
+    const cartCount =
+        document.getElementById("cartCount");
 
-        count = document.createElement("span");
+    const cartTotal =
+        document.getElementById("cartTotal");
 
-        count.className = "cart-count";
 
-        cartButton.appendChild(count);
+    let totalItems = 0;
+
+    let totalPrice = 0;
+
+
+    cart.forEach(item => {
+
+        totalItems += item.quantity;
+
+        totalPrice +=
+            item.price * item.quantity;
+
+    });
+
+
+    cartCount.textContent = totalItems;
+
+    cartTotal.textContent =
+        "Rs. " + totalPrice.toLocaleString();
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+        `;
+
+        return;
     }
 
-    count.textContent = cart.length;
+
+    cartItems.innerHTML =
+        cart.map((item, index) => {
+
+            return `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>
+                            ${item.name}
+                        </strong>
+
+                        <small>
+                            Rs. ${item.price.toLocaleString()}
+                            × ${item.quantity}
+                        </small>
+
+                    </div>
+
+                    <button
+                        class="remove-item"
+                        onclick="removeFromCart(${index})">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }).join("");
 }
 
 
-// ================================
-// CART BUTTON
-// ================================
+function removeFromCart(index) {
 
-cartButton.addEventListener("click", function () {
+    cart.splice(index, 1);
+
+    updateCart();
+}
+
+
+function openCart() {
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("show");
+}
+
+
+function closeCart() {
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("show");
+}
+
+
+function checkout() {
 
     if (cart.length === 0) {
 
@@ -482,303 +143,111 @@ cartButton.addEventListener("click", function () {
         return;
     }
 
-    let message = "🛒 YOUR CART\n\n";
 
-    cart.forEach(function (item, index) {
-
-        message +=
-            (index + 1) +
-            ". " +
-            item.name +
-            " - " +
-            item.price +
-            "\n";
-
-    });
-
-    message +=
-        "\nTotal Items: " +
-        cart.length;
-
-    alert(message);
-
-});
+    alert(
+        "Thank you for choosing Craving Time! " +
+        "Your order has been received."
+    );
 
 
-// ================================
-// LOGIN
-// ================================
+    cart = [];
 
-const loginButton = document.querySelector(".login-btn");
+    updateCart();
 
-loginButton.addEventListener("click", function () {
-
-    const name = prompt("Enter your name:");
-
-    if (name === null) {
-        return;
-    }
-
-    if (name.trim() === "") {
-
-        alert("Please enter your name.");
-
-        return;
-    }
-
-    alert("Welcome, " + name + "! 👋");
-
-});
-
-
-// ================================
-// SEARCH
-// ================================
-
-const searchInput =
-    document.querySelector(".search-box input");
-
-if (searchInput) {
-
-    searchInput.addEventListener("input", function () {
-
-        const value =
-            searchInput.value.toLowerCase().trim();
-
-        const cards =
-            document.querySelectorAll(".food-card");
-
-        cards.forEach(function (card) {
-
-            const name =
-                card.querySelector("h3")
-                    .textContent
-                    .toLowerCase();
-
-            const description =
-                card.querySelector("p")
-                    .textContent
-                    .toLowerCase();
-
-            if (
-                name.includes(value) ||
-                description.includes(value)
-            ) {
-
-                card.style.display = "";
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
-
+    closeCart();
 }
 
 
-// ================================
-// MENU CATEGORIES
-// ================================
+// ================= MENU FILTER =================
 
-const categories =
-    document.querySelectorAll(".category");
+function filterMenu(category, button) {
 
-categories.forEach(function (category) {
+    const cards =
+        document.querySelectorAll(".food-card");
 
-    category.addEventListener("click", function () {
-
-        categories.forEach(function (item) {
-
-            item.classList.remove("active");
-
-        });
-
-        category.classList.add("active");
-
-    });
-
-});
+    const buttons =
+        document.querySelectorAll(".filter");
 
 
-// ================================
-// DELIVERY / PICKUP
-// ================================
+    buttons.forEach(btn => {
 
-const delivery =
-    document.querySelector(".delivery");
-
-const pickup =
-    document.querySelector(".pickup");
-
-if (delivery && pickup) {
-
-    delivery.addEventListener("click", function () {
-
-        delivery.classList.add("active");
-        pickup.classList.remove("active");
+        btn.classList.remove("active");
 
     });
 
 
-    pickup.addEventListener("click", function () {
-
-        pickup.classList.add("active");
-        delivery.classList.remove("active");
-
-    });
-
-}
+    button.classList.add("active");
 
 
-// ================================
-// ORDER NOW
-// ================================
+    cards.forEach(card => {
 
-const orderButtons =
-    document.querySelectorAll(".order-btn, .offer-btn");
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
 
-orderButtons.forEach(function (button) {
+            card.style.display = "block";
 
-    button.addEventListener("click", function () {
+        } else {
 
-        const menu =
-            document.querySelector("#menu");
-
-        if (menu) {
-
-            menu.scrollIntoView({
-                behavior: "smooth"
-            });
+            card.style.display = "none";
 
         }
 
     });
 
-});
+}
 
 
-// ================================
-// SMOOTH NAVIGATION
-// ================================
+// ================= BUFFET =================
 
-const navLinks =
-    document.querySelectorAll(".navbar a");
+function bookBuffet() {
 
-navLinks.forEach(function (link) {
+    document
+        .getElementById("contact")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 
-    link.addEventListener("click", function (event) {
+}
 
-        const targetId =
-            link.getAttribute("href");
 
-        const target =
-            document.querySelector(targetId);
+// ================= RESERVATION =================
 
-        if (target) {
+document
+    .getElementById("reservationForm")
+    .addEventListener(
+        "submit",
+        function(event) {
 
             event.preventDefault();
 
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+
+            alert(
+                "Your table reservation has been " +
+                "submitted successfully!"
+            );
+
+
+            this.reset();
 
         }
-
-    });
-
-});
-
-
-// ================================
-// CONSOLE MESSAGE
-// ================================
-
-console.log("Cheezy Food website is working!");
-
-// =====================================
-// LOGIN SCREEN
-// =====================================
-
-const loginButton = document.querySelector(".login-btn");
-
-const loginScreen =
-    document.querySelector("#loginScreen");
-
-const closeLogin =
-    document.querySelector("#closeLogin");
-
-const guestButton =
-    document.querySelector("#guestBtn");
-
-const phoneLoginButton =
-    document.querySelector("#phoneLoginBtn");
-
-
-// Open Login Screen
-
-loginButton.addEventListener("click", function () {
-
-    loginScreen.classList.add("show");
-
-});
-
-
-// Close Login Screen
-
-closeLogin.addEventListener("click", function () {
-
-    loginScreen.classList.remove("show");
-
-});
-
-
-// Guest Login
-
-guestButton.addEventListener("click", function () {
-
-    alert("Welcome! You are continuing as a guest.");
-
-    loginScreen.classList.remove("show");
-
-});
-
-
-// Phone Login
-
-phoneLoginButton.addEventListener("click", function () {
-
-    const phone =
-        prompt("Enter your phone number:");
-
-    if (phone === null) {
-        return;
-    }
-
-    if (phone.trim() === "") {
-
-        alert("Please enter your phone number.");
-
-        return;
-    }
-
-    alert(
-        "OTP will be sent to " +
-        phone
     );
 
-});
-const chatBtn = document.getElementById("chatBtn");
-const chatBox = document.getElementById("chatBox");
-const closeChat = document.getElementById("closeChat");
 
-chatBtn.addEventListener("click", function () {
-    chatBox.style.display = "block";
-});
+// ================= CLOSE CART =================
 
-closeChat.addEventListener("click", function () {
-    chatBox.style.display = "none";
-});
+document
+    .getElementById("cartOverlay")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === this) {
+
+                closeCart();
+
+            }
+
+        }
+    );

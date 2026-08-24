@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Craving Time | Restaurant & Buffet</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            <span class="logo-icon">🍽️</span>
+            <span>
+                <strong>Craving</strong> Time
+            </span>
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#buffet">Buffet</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="cart-btn" onclick="openCart()">
+            🛒 <span id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="small-title">
+            WELCOME TO CRAVING TIME
+        </span>
+
+        <h1>
+            Where Every
+            <span>Craving</span>
+            Finds Its Flavor
+        </h1>
+
+        <p>
+            Enjoy delicious Pakistani cuisine, freshly baked
+            treats, fast food, desserts and refreshing drinks
+            all under one roof.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#menu" class="btn primary-btn">
+                Explore Menu
+            </a>
+
+            <a href="#buffet" class="btn secondary-btn">
+                View Buffet
+            </a>
+
+        </div>
+
+        <div class="hero-info">
+
+            <div>
+                <strong>50+</strong>
+                <span>Food Items</span>
+            </div>
+
+            <div>
+                <strong>4.9</strong>
+                <span>Customer Rating</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Fresh Food</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>WHAT WE SERVE</span>
+
+            <h2>Explore Our Flavors</h2>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <!-- PAKISTANI -->
+
+            <div class="category-card">
+
+                <div class="category-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=85"
+                        alt="Chicken Tikka Pakistani Food">
+                </div>
+
+                <h3>Pakistani</h3>
+
+                <p>
+                    Traditional desi flavors
+                </p>
+
+            </div>
+
+
+            <!-- BAKERY -->
+
+            <div class="category-card">
+
+                <div class="category-image">
+                    <img
+                        src="bakery.png"
+                        alt="Fresh Bakery">
+                </div>
+
+                <h3>Bakery</h3>
+
+                <p>
+                    Freshly baked every day
+                </p>
+
+            </div>
+
+
+            <!-- FAST FOOD -->
+
+            <div class="category-card">
+
+                <div class="category-image">
+                    <img
+                        src="Fast Food.png"
+                        alt="Crispy Chicken Burger">
+                </div>
+
+                <h3>Fast Food</h3>
+
+                <p>
+                    Delicious crispy bites
+                </p>
+
+            </div>
+
+
+            <!-- DESSERTS -->
+
+            <div class="category-card">
+
+                <div class="category-image">
+                    <img
+                        src="Desserts.png"
+                        alt="Cake">
+                </div>
+
+                <h3>Desserts</h3>
+
+                <p>
+                    Sweet moments for everyone
+                </p>
+
+            </div>
+
+
+            <!-- DRINKS -->
+
+            <div class="category-card">
+
+                <div class="category-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=85"
+                        alt="Fresh Drinks">
+                </div>
+
+                <h3>Drinks</h3>
+
+                <p>
+                    Refreshing beverages
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MENU ================= -->
+
+<section class="menu-section" id="menu">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>OUR MENU</span>
+
+            <h2>Choose Your Favorite</h2>
+
+        </div>
+
+
+        <div class="filters">
+
+            <button class="filter active"
+                    onclick="filterMenu('all', this)">
+                All
+            </button>
+
+            <button class="filter"
+                    onclick="filterMenu('pakistani', this)">
+                Pakistani
+            </button>
+
+            <button class="filter"
+                    onclick="filterMenu('bakery', this)">
+                Bakery
+            </button>
+
+            <button class="filter"
+                    onclick="filterMenu('fastfood', this)">
+                Fast Food
+            </button>
+
+            <button class="filter"
+                    onclick="filterMenu('dessert', this)">
+                Desserts
+            </button>
+
+            <button class="filter"
+                    onclick="filterMenu('drink', this)">
+                Drinks
+            </button>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+
+            <!-- BIRYANI -->
+
+            <div class="food-card" data-category="pakistani">
+
+                <div class="food-image">
+                    <img
+                        src="Chicken Biryani.png"
+                        alt="Chicken Biryani">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">PAKISTANI</span>
+
+                    <h3>Chicken Biryani</h3>
+
+                    <p>
+                        Aromatic basmati rice with tender chicken
+                        and traditional spices.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 450</strong>
+
+                        <button onclick="addToCart('Chicken Biryani',450)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- KARAHI -->
+
+            <div class="food-card" data-category="pakistani">
+
+                <div class="food-image">
+                    <img
+                        src="chicken Karahi.png"
+                        alt="Chicken Karahi">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">PAKISTANI</span>
+
+                    <h3>Chicken Karahi</h3>
+
+                    <p>
+                        Classic Pakistani karahi with tomatoes,
+                        green chilies and aromatic spices.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 700</strong>
+
+                        <button onclick="addToCart('Chicken Karahi',700)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NIHARI -->
+
+            <div class="food-card" data-category="pakistani">
+
+                <div class="food-image">
+                    <img
+                        src="Beef Nihari.png"
+                        alt="Beef Nihari">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">PAKISTANI</span>
+
+                    <h3>Beef Nihari</h3>
+
+                    <p>
+                        Slow-cooked beef with rich traditional
+                        Pakistani spices and gravy.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 650</strong>
+
+                        <button onclick="addToCart('Beef Nihari',650)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CROISSANT -->
+
+            <div class="food-card" data-category="bakery">
+
+                <div class="food-image">
+                    <img
+                        src="Butter Croissant.png"
+                        alt="Butter Croissant">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">BAKERY</span>
+
+                    <h3>Butter Croissant</h3>
+
+                    <p>
+                        Flaky, buttery and freshly baked golden
+                        croissant.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 220</strong>
+
+                        <button onclick="addToCart('Butter Croissant',220)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CAKE -->
+
+            <div class="food-card" data-category="bakery">
+
+                <div class="food-image">
+                    <img
+                        src="Cake.png"
+                        alt="Cake">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">BAKERY</span>
+
+                    <h3>Chocolate Cake</h3>
+
+                    <p>
+                        Rich chocolate cake with smooth
+                        chocolate cream.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 350</strong>
+
+                        <button onclick="addToCart('Chocolate Cake',350)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BURGER -->
+
+            <div class="food-card" data-category="fastfood">
+
+                <div class="food-image">
+                    <img
+                        src="Zinger Burger.png"
+                        alt="Zinger Burger">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">FAST FOOD</span>
+
+                    <h3>Zinger Burger</h3>
+
+                    <p>
+                        Crispy chicken fillet with lettuce,
+                        cheese and special sauce.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 520</strong>
+
+                        <button onclick="addToCart('Zinger Burger',520)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PIZZA -->
+
+            <div class="food-card" data-category="fastfood">
+
+                <div class="food-image">
+                    <img
+                        src="chicken Pizza.png"
+                        alt="Chicken Pizza">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">FAST FOOD</span>
+
+                    <h3>Chicken Pizza</h3>
+
+                    <p>
+                        Cheesy chicken pizza topped with fresh
+                        vegetables and herbs.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 750</strong>
+
+                        <button onclick="addToCart('Chicken Pizza',750)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- GULAB JAMUN -->
+
+            <div class="food-card" data-category="dessert">
+
+                <div class="food-image">
+                    <img
+                        src="Gulab Jamun.png"
+                        alt="Gulab Jamun">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">DESSERT</span>
+
+                    <h3>Gulab Jamun</h3>
+
+                    <p>
+                        Soft golden gulab jamun served in
+                        sweet aromatic syrup.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 180</strong>
+
+                        <button onclick="addToCart('Gulab Jamun',180)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MINT MARGARITA -->
+
+            <div class="food-card" data-category="drink">
+
+                <div class="food-image">
+                    <img
+                        src="Mint Margarita.png"
+                        alt="Mint Margarita">
+                </div>
+
+                <div class="food-content">
+
+                    <span class="food-tag">DRINK</span>
+
+                    <h3>Mint Margarita</h3>
+
+                    <p>
+                        Refreshing mint and lemon drink served
+                        chilled with crushed ice.
+                    </p>
+
+                    <div class="food-bottom">
+                        <strong>Rs. 250</strong>
+
+                        <button onclick="addToCart('Mint Margarita',250)">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BUFFET ================= -->
+
+<section class="buffet" id="buffet">
+
+    <div class="container buffet-inner">
+
+        <div class="buffet-text">
+
+            <span>CRAVING TIME SPECIAL</span>
+
+            <h2>
+                The Grand
+                <strong>Buffet</strong>
+            </h2>
+
+            <p>
+                Enjoy a complete dining experience with
+                Pakistani cuisine, continental dishes,
+                freshly baked items, desserts and
+                refreshing drinks.
+            </p>
+
+            <div class="buffet-features">
+
+                <div>
+                    <strong>30+</strong>
+                    <span>Dishes</span>
+                </div>
+
+                <div>
+                    <strong>10+</strong>
+                    <span>Desserts</span>
+                </div>
+
+                <div>
+                    <strong>5+</strong>
+                    <span>Drinks</span>
+                </div>
+
+            </div>
+
+            <a href="#contact" class="btn primary-btn">
+                Reserve Your Table
+            </a>
+
+        </div>
+
+
+        <div class="buffet-card">
+
+            <div class="buffet-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=85"
+                    alt="Restaurant Buffet">
+
+            </div>
+
+            <span>DAILY BUFFET</span>
+
+            <h3>Grand Craving</h3>
+
+            <div class="price">
+                Rs. 2,499
+                <small>/ person</small>
+            </div>
+
+            <p>11:00 AM — 10:00 PM</p>
+
+            <div class="buffet-line"></div>
+
+            <p>✓ Pakistani Cuisine</p>
+            <p>✓ Bakery & Desserts</p>
+            <p>✓ Fast Food</p>
+            <p>✓ Fresh Drinks</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
+                alt="Craving Time Restaurant">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <span>OUR STORY</span>
+
+            <h2>
+                More Than Just
+                <strong>Food</strong>
+            </h2>
+
+            <p>
+                Craving Time is a modern restaurant experience
+                where traditional Pakistani flavors meet
+                contemporary dining.
+            </p>
+
+            <p>
+                From family dinners to casual meals, our menu
+                brings together Pakistani cuisine, bakery items,
+                fast food and desserts.
+            </p>
+
+            <div class="about-points">
+
+                <div>✓ Fresh Ingredients</div>
+                <div>✓ Authentic Flavors</div>
+                <div>✓ Hygienic Kitchen</div>
+                <div>✓ Friendly Service</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+
+<section class="reviews">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>WHAT OUR GUESTS SAY</span>
+
+            <h2>Loved By Everyone</h2>
+
+        </div>
+
+
+        <div class="review-grid">
+
+            <div class="review-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The biryani and desserts were absolutely
+                    amazing. The buffet has so much variety!"
+                </p>
+
+                <strong>— Ayesha</strong>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Beautiful atmosphere, delicious food
+                    and very reasonable prices."
+                </p>
+
+                <strong>— Noha</strong>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "I loved the bakery section. Everything
+                    tasted fresh and delicious."
+                </p>
+
+                <strong>— Rumshi</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container contact-grid">
+
+        <div>
+
+            <span>GET IN TOUCH</span>
+
+            <h2>
+                Visit <strong>Craving Time</strong>
+            </h2>
+
+            <p>
+                Come and enjoy a complete dining experience
+                with your friends and family.
+            </p>
+
+            <div class="contact-info">
+
+                <p>📍 JAIL ROAD, Lahore</p>
+                <p>📞 +92 300 1234567</p>
+                <p>✉️ hello@cravingtime.com</p>
+                <p>🕐 11:00 AM — 10:00 PM</p>
+
+            </div>
+
+        </div>
+
+
+        <form id="reservationForm">
+
+            <h3>Reserve a Table</h3>
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required>
+
+            <input
+                type="tel"
+                placeholder="Phone Number"
+                required>
+
+            <input
+                type="date"
+                required>
+
+            <select required>
+
+                <option value="">
+                    Number of Guests
+                </option>
+
+                <option>1 Person</option>
+                <option>2 People</option>
+                <option>3 People</option>
+                <option>4 People</option>
+                <option>5+ People</option>
+
+            </select>
+
+            <button
+                type="submit"
+                class="btn primary-btn">
+
+                Book Now
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+
+            <h2>Craving Time</h2>
+
+            <p>
+                Where Every Craving Finds Its Flavor.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#buffet">Buffet</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+
+        <p class="copyright">
+            © 2026 Craving Time. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-overlay" id="cartOverlay">
+
+    <div class="cart">
+
+        <button
+            class="close-cart"
+            onclick="closeCart()">
+            ×
+        </button>
+
+        <h2>Your Order</h2>
+
+        <div id="cartItems">
+
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+
+        </div>
+
+        <div class="cart-total">
+
+            <span>Total</span>
+
+            <strong id="cartTotal">
+                Rs. 0
+            </strong>
+
+        </div>
+
+        <button
+            class="btn primary-btn checkout-btn"
+            onclick="checkout()">
+
+            Checkout
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html> 
